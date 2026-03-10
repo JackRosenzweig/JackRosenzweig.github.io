@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+
+<head>
+<title> Reading Repository</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="w3.css">
+</head>
+
+<body>
+<header>
+	<!-- <div  class="w3-top"> -->
+		<div class="w3-bar w3-white w3-wide w3-padding w3-card">
+			<div class="w3-bar-item"> <b>Reading Repository</b> </div>
+			<nav>
+				<ul>
+					<li> <button onclick="changeColumn('Status')" class="w3-btn"> Status </button> </li>
+					<li> <button onclick="changeColumn('Rating')" class="w3-btn"> Rating </button> </li>
+					<li> <button onclick="changeColumn('Genre')" class="w3-btn"> Genre </button> </li>
+					<li> <button onclick="changeColumn('Format')" class="w3-btn"> Format </button> </li>
+					<li> <button onclick="changeColumn('Ownership')" class="w3-btn"> Ownership </button> </li>
+				</ul>
+
+				<select onchange="changeColumn(this.value)">
+					<option value="Status"> Status </option>
+					<option value="Rating"> Rating </option>
+					<option value="Genre"> Genre </option>
+					<option value="Format"> Format </option>
+					<option value="Ownership"> Ownership </option>
+				</select>
+			</nav>
+		</div>
+	<!-- </div> -->
+	<div class="w3-display-topmiddle w3-xxlarge custom-padding">
+		<b class="adjustable"> Reading Repository </b>
+	</div>
+</header>
+<div class="main">
+	<div class="main-table">
+		<table class="center adjustable" id="dynamicTable">
+			<thead>
+				<tr>
+					<th> <h3 class="adjustable"> <b> Title </b> </h3> </th>
+					<th> <h3 class="adjustable"> <b> Author </b></h3> </th>
+					<th> <h3 class="adjustable"> <b id="changingColumn"> Status </b> </h3> </th>
+					<th> <h3 class="adjustable"> <b> Edit/Delete </b> </h3> </th>
+				</tr>
+			</thead>
+			<tbody id="tableBody">
+		
+			</tbody>
+		</table>
+	</div>
+
+	<div class="add-button">
+		<button class="add-button" onclick="openForm()" type="button"> Add Entry </button>
+	</div>
+	<div class="popup-form-overlay" id="overlay">
+		<div class="popup-form" id="formContent">
+			<form id="newEntry" class="popup-form adjustable">
+				<h3 class="adjustable form-title"> New Entry </h3>
+				<label for="title"> Title: </label>
+				<input class="form-item" type="text" id="title" required> <br>
+			
+				<label for="author" required> Author: </label>
+				<input class="form-item" type="text" id="author" required> <br>
+			
+				<label for="status"> Status: </label>
+				<select class="form-item" name="status" id="status" required>
+					<option disabled selected> Select One </option>
+					<option value="Not Started"> Not Started </option>
+					<option value="In Progress"> In Progress </option>
+					<option value="Completed"> Completed </option>
+				</select> <br>
+			
+				<label for="rating"> Rating: </label>
+				<select class="form-item" name="rating" id="rating"> 
+					<option disabled selected> Select One </option>
+					<option value="Not Read"> Not Read </option>
+					<option value="0/5: Could Not Finish"> 0/5: Could Not Finish </option>
+					<option value="1/5: Did Not Enjoy"> 1/5: Did Not Enjoy </option>
+					<option value="2/5: Not Good"> 2/5: Not Good </option>
+					<option value="3/5: Passable"> 3/5: Passable </option>
+					<option value="4/5: Enjoyable"> 4/5: Enjoyable </option>
+					<option value="5/5: A Work of Art">  5/5: A Work of Art </option>
+				</select> <br>
+			
+				<label for="genre"> Genre: </label>
+				<input class="form-item" type="text" id="genre" required> <br>
+			
+				<label for="format"> Format: </label>
+				<select class="form-item" name="format" id="format" required>
+					<option disabled selected> Select One </option>
+					<option value="Book (Hard Copy)"> Book (Hard Copy) </option>
+					<option value="Book (Digital Copy)"> Book (Digital Copy) </option>
+					<option value="Audiobook "> Audiobook </option>
+				</select> <br>
+			
+				<label for="ownership"> Ownership: </label>
+				<select class="form-item" name="ownership" id="ownership" required>
+					<option disabled selected> Select One </option>
+					<option value="Owned"> Owned </option>
+					<option value="Borrowed (Library)"> Borrowed (Library) </option>
+					<option value="Borrowed (Individual)"> Borrowed (Individual) </option>
+					<option value="Not Owned"> Not Owned </option>
+				</select> <br>
+			
+				<div  class="form-buttons">
+					<button type="button" onclick="closeForm()"> Cancel </button>
+					<button type="button" onclick="deleteEntry()" id="deleteButton" class="w3-danger delete-button"> Delete </button>
+					<button type="button" onclick="submitEntry()" id="pushButton"> Add </button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<script src="repositoryscripts.js"></script> 
+</body>
+</html>
